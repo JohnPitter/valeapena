@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Vale a Pena? | Descubra o custo real de um carro usado',
@@ -12,8 +15,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <body className="min-h-screen bg-gray-50">
+    <html lang="pt-BR" className="dark">
+      <body className={`${inter.className} min-h-screen bg-slate-900`}>
         {children}
       </body>
     </html>
