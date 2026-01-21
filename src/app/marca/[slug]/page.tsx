@@ -2,15 +2,18 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getCarrosByMarca } from '@/lib/carros';
 import CarroCard from '@/components/CarroCard';
+import MarcaLogo from '@/components/MarcaLogo';
 import { Metadata } from 'next';
 
-const MARCAS: Record<string, { nome: string; logo: string }> = {
-  'bmw': { nome: 'BMW', logo: '🔵' },
-  'mercedes-benz': { nome: 'Mercedes-Benz', logo: '⭐' },
-  'audi': { nome: 'Audi', logo: '⚫' },
-  'land-rover': { nome: 'Land Rover', logo: '🟢' },
-  'volvo': { nome: 'Volvo', logo: '🔷' },
-  'jaguar': { nome: 'Jaguar', logo: '🐆' },
+const MARCAS: Record<string, { nome: string }> = {
+  'bmw': { nome: 'BMW' },
+  'mercedes-benz': { nome: 'Mercedes-Benz' },
+  'audi': { nome: 'Audi' },
+  'land-rover': { nome: 'Land Rover' },
+  'volvo': { nome: 'Volvo' },
+  'jaguar': { nome: 'Jaguar' },
+  'porsche': { nome: 'Porsche' },
+  'lexus': { nome: 'Lexus' },
 };
 
 interface PageProps {
@@ -56,7 +59,7 @@ export default async function MarcaPage({ params }: PageProps) {
 
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex items-center gap-4 mb-8">
-          <span className="text-5xl">{marca.logo}</span>
+          <MarcaLogo marca={slug} className="w-16 h-16" />
           <div>
             <h1 className="text-3xl font-bold text-white">{marca.nome}</h1>
             <p className="text-slate-400">{carros.length} {carros.length === 1 ? 'modelo disponivel' : 'modelos disponiveis'}</p>

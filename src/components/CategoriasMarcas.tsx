@@ -1,12 +1,13 @@
 import Link from 'next/link';
+import MarcaLogo from './MarcaLogo';
 
 const MARCAS = [
-  { nome: 'BMW', logo: '🔵', slug: 'bmw', modelos: 12 },
-  { nome: 'Mercedes-Benz', logo: '⭐', slug: 'mercedes-benz', modelos: 15 },
-  { nome: 'Audi', logo: '⚫', slug: 'audi', modelos: 10 },
-  { nome: 'Land Rover', logo: '🟢', slug: 'land-rover', modelos: 6 },
-  { nome: 'Volvo', logo: '🔷', slug: 'volvo', modelos: 8 },
-  { nome: 'Jaguar', logo: '🐆', slug: 'jaguar', modelos: 5 },
+  { nome: 'BMW', slug: 'bmw', modelos: 12 },
+  { nome: 'Mercedes-Benz', slug: 'mercedes-benz', modelos: 15 },
+  { nome: 'Audi', slug: 'audi', modelos: 10 },
+  { nome: 'Land Rover', slug: 'land-rover', modelos: 6 },
+  { nome: 'Volvo', slug: 'volvo', modelos: 8 },
+  { nome: 'Jaguar', slug: 'jaguar', modelos: 5 },
 ];
 
 export default function CategoriasMarcas() {
@@ -16,9 +17,9 @@ export default function CategoriasMarcas() {
         <Link
           key={marca.slug}
           href={`/marca/${marca.slug}`}
-          className="bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl p-6 text-center transition-all hover:scale-105"
+          className="bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl p-6 text-center transition-all hover:scale-105 flex flex-col items-center"
         >
-          <span className="text-4xl mb-3 block">{marca.logo}</span>
+          <MarcaLogo marca={marca.slug} className="w-16 h-16 mb-3" />
           <p className="font-semibold text-white">{marca.nome}</p>
           <p className="text-sm text-slate-500">{marca.modelos} modelos</p>
         </Link>
