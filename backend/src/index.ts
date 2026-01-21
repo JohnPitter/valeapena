@@ -4,6 +4,7 @@ import cors from 'cors';
 import './config/firebase.js';
 import fipeRoutes from './routes/fipe.js';
 import solicitacoesRoutes from './routes/solicitacoes.js';
+import { startScheduler } from './jobs/scheduler.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -17,6 +18,9 @@ app.use('/api/solicitacoes', solicitacoesRoutes);
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+// Start scheduler
+startScheduler();
 
 app.listen(PORT, () => {
   console.log(`Backend running on port ${PORT}`);
