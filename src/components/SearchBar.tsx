@@ -5,12 +5,14 @@ import { useRouter } from 'next/navigation';
 import { searchCarros } from '@/lib/carros';
 import { Carro } from '@/types';
 import { slugify } from '@/lib/utils';
+import SolicitarCarroModal from './SolicitarCarroModal';
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Carro[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -98,6 +100,20 @@ export default function SearchBar() {
           ))}
         </div>
       )}
+
+      {isOpen && query.length >= 2 && results.length === 0 && !isLoading && (
+        <div className="absolute w-full mt-2 bg-slate-800 border border-slate-700 rounded-2xl shadow-2xl p-6 z-50 text-center">
+          <p className="text-slate-400 mb-4">Nenhum carro encontrado para "{query}"</p>
+          <button
+            onClick={() => setShowModal(true)}
+            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold transition-colors"
+          >
+            Solicitar este carro
+          </button>
+        </div>
+      )}
+
+      <SolicitarCarroModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 }
