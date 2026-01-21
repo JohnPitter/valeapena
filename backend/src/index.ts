@@ -4,6 +4,7 @@ import cors from 'cors';
 import './config/firebase.js';
 import fipeRoutes from './routes/fipe.js';
 import solicitacoesRoutes from './routes/solicitacoes.js';
+import adminRoutes from './routes/admin.js';
 import { startScheduler } from './jobs/scheduler.js';
 
 const app = express();
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use('/api/fipe', fipeRoutes);
 app.use('/api/solicitacoes', solicitacoesRoutes);
+app.use('/api/admin', adminRoutes);
 
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
