@@ -10,6 +10,8 @@
 [![Firebase](https://img.shields.io/badge/Firebase-12-FFCA28?logo=firebase)](https://firebase.google.com/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![CI](https://github.com/JohnPitter/valeapena/actions/workflows/ci.yml/badge.svg)](https://github.com/JohnPitter/valeapena/actions/workflows/ci.yml)
+[![Deploy](https://github.com/JohnPitter/valeapena/actions/workflows/deploy.yml/badge.svg)](https://github.com/JohnPitter/valeapena/actions/workflows/deploy.yml)
 
 [Demo](https://valeapena.com.br) • [Documentação](#arquitetura) • [Contribuir](#contribuindo)
 
@@ -281,6 +283,36 @@ valeapena/
 
 ---
 
+## CI/CD
+
+O projeto utiliza GitHub Actions para integração e deploy contínuos.
+
+### Workflows
+
+| Workflow | Trigger | Descrição |
+|----------|---------|-----------|
+| **CI** | Push/PR para `main` | Lint e build do frontend e backend |
+| **Deploy** | Push para `main` | Deploy frontend (Firebase) e backend (Railway) |
+| **Preview** | PR para `main` | Deploy de preview no Firebase |
+
+### GitHub Secrets Necessários
+
+Configure os seguintes secrets no repositório (`Settings > Secrets > Actions`):
+
+| Secret | Descrição |
+|--------|-----------|
+| `NEXT_PUBLIC_FIREBASE_API_KEY` | API Key do Firebase |
+| `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN` | Auth domain do Firebase |
+| `NEXT_PUBLIC_FIREBASE_PROJECT_ID` | Project ID do Firebase |
+| `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET` | Storage bucket do Firebase |
+| `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID` | Messaging sender ID |
+| `NEXT_PUBLIC_FIREBASE_APP_ID` | App ID do Firebase |
+| `NEXT_PUBLIC_API_URL` | URL do backend em produção |
+| `FIREBASE_SERVICE_ACCOUNT` | JSON da service account (para deploy) |
+| `RAILWAY_TOKEN` | Token de deploy do Railway |
+
+---
+
 ## Roadmap
 
 - [x] Frontend base com Next.js
@@ -293,6 +325,7 @@ valeapena/
 - [x] Notificações por email
 - [x] Jobs de scraping agendados
 - [x] Redesign dark theme
+- [x] CI/CD com GitHub Actions
 - [ ] Scraper OLX
 - [ ] Scraper iCarros
 - [ ] Dashboard administrativo
