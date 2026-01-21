@@ -64,3 +64,15 @@ export async function incrementBuscas(carroId: string): Promise<void> {
     buscas: increment(1)
   });
 }
+
+export async function getCarrosByMarca(marcaSlug: string): Promise<Carro[]> {
+  const carrosRef = collection(db, 'carros');
+  const snapshot = await getDocs(carrosRef);
+
+  return snapshot.docs
+    .map(doc => ({ id: doc.id, ...doc.data() } as Carro))
+    .filter(carro =>
+      carro.marca.toLowerCase().replace(/[^a-z0-9]/g, '-') === marcaSlug
+    )
+    .sort((a, b) => b.buscas - a.buscas);
+}
