@@ -186,11 +186,11 @@ Configure os seguintes secrets no repositório (`Settings > Secrets > Actions`):
 - [x] Jobs de scraping agendados
 - [x] Redesign dark theme
 - [x] CI/CD com GitHub Actions
-- [ ] Scraper OLX
-- [ ] Scraper iCarros
-- [ ] Dashboard administrativo
-- [ ] Autenticação de usuários
-- [ ] Deploy produção
+- [x] Scraper OLX
+- [x] Scraper iCarros
+- [x] Dashboard administrativo
+- [x] Autenticacao de usuarios
+- [ ] Deploy producao
 
 ---
 
