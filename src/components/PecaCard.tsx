@@ -9,20 +9,22 @@ const siteIcons: Record<string, string> = {
   mercadolivre: '🛒',
   autozone: '🔧',
   olx: '📦',
+  icarros: '🚘',
 };
 
 const siteNames: Record<string, string> = {
   mercadolivre: 'MercadoLivre',
   autozone: 'AutoZone',
   olx: 'OLX',
+  icarros: 'iCarros',
 };
 
 export default function PecaCard({ peca }: PecaCardProps) {
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5">
+    <div className="bg-slate-800 rounded-xl border border-slate-700 p-5">
       <div className="flex justify-between items-start mb-3">
-        <h3 className="font-semibold text-gray-900">{peca.nome}</h3>
-        <span className="text-lg font-bold text-green-600">
+        <h3 className="font-semibold text-white">{peca.nome}</h3>
+        <span className="text-lg font-bold text-emerald-400">
           {formatPriceRange(peca.precoMin, peca.precoMax)}
         </span>
       </div>
@@ -33,7 +35,7 @@ export default function PecaCard({ peca }: PecaCardProps) {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 px-3 py-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm transition-colors"
+            className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-700 hover:bg-slate-600 rounded-full text-sm text-slate-300 transition-colors"
           >
             <span>{siteIcons[link.site]}</span>
             <span>{siteNames[link.site]}</span>
