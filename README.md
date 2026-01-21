@@ -97,30 +97,11 @@ cd ..
 
 ### 4. Configure as variáveis de ambiente
 
-**Frontend** (`.env.local`):
+Copie os arquivos de exemplo e configure suas credenciais:
 
-```env
-NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=your_project_id
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
-NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
-NEXT_PUBLIC_API_URL=http://localhost:3001
-```
-
-**Backend** (`backend/.env`):
-
-```env
-PORT=3001
-FIREBASE_PROJECT_ID=your_project_id
-FIREBASE_CLIENT_EMAIL=firebase-adminsdk@your_project.iam.gserviceaccount.com
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n"
-SENDGRID_API_KEY=SG.your_sendgrid_api_key
-SENDGRID_FROM_EMAIL=noreply@valeapena.com.br
-SCRAPING_FREQUENCY_HOURS=12
-EMAIL_FREQUENCY_MINUTES=5
-FRONTEND_URL=http://localhost:3000
+```bash
+cp .env.example .env.local
+cp backend/.env.example backend/.env
 ```
 
 ### 5. Inicie os servidores
